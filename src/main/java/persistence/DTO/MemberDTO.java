@@ -19,10 +19,6 @@ public class MemberDTO {
         this.phoneNum = phoneNum;
     }
 
-//    public String getPhoneNum(){
-//        return phoneNum;
-//    }
-
     public String toString(){
         return "id : " + id + ", name : " + name + ", password : " + password + ", phoneNum : " + phoneNum;
     }

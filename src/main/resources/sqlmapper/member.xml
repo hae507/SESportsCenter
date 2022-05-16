@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--쓰지않는 파일입니다. 마지막에 삭제 예정입니다-->
+
 <mapper namespace="mapper.memberMapper">
 <!--    <resultMap id="result" type="persistence.DTO.MemberDTO">-->
 <!--        <result property="id" column="id"/>-->

@@ -18,6 +18,7 @@ public class MyBatisConnectionFactory {
             if (sqlSessionFactory == null) {
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
                 Class[] mappers={
+//                        mapper 클래스 생성시 여기에도 추가해야 합니다
                         MemberMapper.class,
                 };
                 for(Class mapper:mappers){
