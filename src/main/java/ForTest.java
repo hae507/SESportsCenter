@@ -25,7 +25,7 @@ public class ForTest {
         List<MemberDTO> memberList = DAOtest.getAllMember();
 
         for(int i = 0; i < memberList.size(); i++) {
-            System.out.println(memberList.get(i));
+            System.out.println(memberList.get(i).getPhoneNum());
         }
 
 
