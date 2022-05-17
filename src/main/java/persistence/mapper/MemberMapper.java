@@ -16,6 +16,13 @@ public interface MemberMapper {
     })
     List<MemberDTO> getAllMember();
 
+    String getCount = "SELECT count(*) from member";
+    @Select(getCount)
+    @Results(id = "countSet", value = {
+            @Result(property = "count(*)", column = "count(*)"),
+    })
+    String getMemberCount();
+
     final String INSERT = "insert into member (id, name, password, phoneNum) values(#{id}, #{name}, #{password}, #{phoneNum})";
     @Insert(INSERT)
     @ResultMap("resultSet")

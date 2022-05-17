@@ -20,12 +20,13 @@ public class ForTest {
         MemberDAO DAOtest = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
 
         MemberDTO DTOtest = new MemberDTO("se56", "김소공", "0101", "010-5432-1234");
-        DAOtest.insertMember(DTOtest);
+//        DAOtest.insertMember(DTOtest);
 
+        System.out.println(DAOtest.getMemberCount());
         List<MemberDTO> memberList = DAOtest.getAllMember();
 
         for(int i = 0; i < memberList.size(); i++) {
-            System.out.println(memberList.get(i).getPhoneNum());
+            System.out.println(memberList.get(i));
         }
 
 

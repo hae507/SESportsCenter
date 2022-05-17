@@ -23,6 +23,13 @@ public class MemberDAO {
         return all;
     }
 
+    public int getMemberCount(){
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        int count = Integer.parseInt(mapper.getMemberCount());
+        return count;
+    }
+
     // insert 후에 조회 자동으로 하게 구현, 중복되는 id가 있는경우 insert 못하게 : 추가할 사항
     public void insertMember(MemberDTO memberDTO){
         SqlSession session = sqlSessionFactory.openSession();
