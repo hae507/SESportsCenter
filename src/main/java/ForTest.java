@@ -19,8 +19,8 @@ public class ForTest {
 //        MemberDTO memberDTO;
         MemberDAO DAOtest = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
 
-        MemberDTO DTOtest = new MemberDTO("se56", "김소공", "0101", "010-5432-1234");
-//        DAOtest.insertMember(DTOtest);
+        MemberDTO DTOtest = new MemberDTO();
+        System.out.println(DAOtest.registerMember("se569", "김소공", "0101", "010-5432-1234"));
 
         System.out.println(DAOtest.getMemberCount());
         List<MemberDTO> memberList = DAOtest.inquiryMember();

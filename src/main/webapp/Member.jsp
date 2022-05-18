@@ -89,9 +89,9 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
-<%--            속도 엄청 오래걸림... 왜지?--%>
+            <%--            속도 엄청 오래걸림... 왜지?--%>
             <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>
-            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? --%>
+            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
             <tbody>
             <td><%= i + 1 %></td>
             <td><%= memberDAO.inquiryMember().get(i).getId() %></td>

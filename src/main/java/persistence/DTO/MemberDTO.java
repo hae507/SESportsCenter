@@ -12,6 +12,9 @@ public class MemberDTO {
     private String password;
     private String phoneNum;
 
+    public MemberDTO(){
+
+    }
     public MemberDTO(String id, String name, String password, String phoneNum){
         this.id = id;
         this.name = name;

@@ -23,6 +23,11 @@ public interface MemberMapper {
     })
     String getMemberCount();
 
+    final String SELECT = "SELECT * FROM member WHERE id = #{id}";
+    @Select(SELECT)
+    @ResultMap("resultSet")
+    List<MemberDTO> selectById(String id);
+
     final String INSERT = "insert into member (id, name, password, phoneNum) values(#{id}, #{name}, #{password}, #{phoneNum})";
     @Insert(INSERT)
     @ResultMap("resultSet")
