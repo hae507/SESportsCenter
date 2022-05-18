@@ -1,59 +1,101 @@
-<%@ page import="persistence.DAO.MemberDAO" %>
-<%@ page import="persistence.MyBatisConnectionFactory" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
+
 <html>
-<style>
-    table, th, td {
-        border: 1px solid #bcbcbc;
-    }
-    table {
-        margin: 0 auto;
-        width: 1200px;
-    }
-</style>
 <head>
     <title>소공 체육센터</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    a:visited {
+        color: blue;
+    }
+    ul {
+        list-style-type: none;
+    }
+    div,
+    ul,
+    li {
+        border: 1px solid black;
+    }
+    .hd_fixed {
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+    .hd_cotent {
+        display: flex;
+        height: 90px;
+        align-items: stretch;
+    }
+    .hd_cotent .logo {
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+    .hd_cotent .logo h1 {
+        line-height: 90px;
+        text-align: center;
+    }
+    .hd_cotent .gnb_menu {
+        height: 100%;
+        margin: 0 auto;
+        width: 900px;
+    }
+    .hd_cotent .gnb_menu ul {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: stretch;
+    }
+    .hd_cotent .gnb_menu ul li {
+        flex: 0 0 13%;
+        line-height: 80px;
+        text-align: center;
+    }
+    .hd_cotent .gnb_menu ul li a {
+        display: inline-block;
+        height: 100%;
+    }
+
+</style>
 <body>
-<h1>
-    소공 체육센터
-</h1>
-<% MemberDAO memberDAO = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory()); %>
-
-<div class=""container>
-    <div class="row">
-        <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-            <thead>
-                <tr>
-                    <th style="background-color: #eeeeee; text-align: center">No.</th>
-                    <th style="background-color: #eeeeee; text-align: center">ID</th>
-                    <th style="background-color: #eeeeee; text-align: center">이름</th>
-                    <th style="background-color: #eeeeee; text-align: center">비밀번호</th>
-                    <th style="background-color: #eeeeee; text-align: center">전화번호</th>
-                </tr>
-            </thead>
-
-            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>
-<%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? --%>
-            <tbody>
-            <td><%= i + 1 %></td>
-            <td><%= memberDAO.getAllMember().get(i).getId() %></td>
-            <td><%= memberDAO.getAllMember().get(i).getName() %></td>
-            <td><%= memberDAO.getAllMember().get(i).getPassword() %></td>
-            <td><%= memberDAO.getAllMember().get(i).getPhoneNum() %></td>
-            </tbody>
-
-            <% }%>
-
-
-        </table>
-        <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+<div class="hd_fixed">
+    <div class="hd_cotent">
+        <div class="logo">
+            <h1>소공 체육센터</h1>
+        </div>
+        <div class="gnb_menu">
+            <ul>
+                <li class="dp1">
+                    <a href="./Member.jsp">회원관리</a>
+                </li>
+                <li class="dp1">
+                    <a href="#none">강사관리</a>
+                </li>
+                <li class="dp1">
+                    <a href="#none">강습관리</a>
+                </li>
+                <li class="dp1">
+                    <a href="#none">공지관리</a>
+                </li>
+                <li class="dp1">
+                    <a href="#none">사물함 관리</a>
+                </li>
+                <li class="dp1">
+                    <a href="#none">매출 관리</a>
+                </li>
+            </ul>
+        </div>
     </div>
-
 </div>
-
-
 </body>
+
 </html>

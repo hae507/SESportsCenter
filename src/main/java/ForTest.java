@@ -23,7 +23,7 @@ public class ForTest {
 //        DAOtest.insertMember(DTOtest);
 
         System.out.println(DAOtest.getMemberCount());
-        List<MemberDTO> memberList = DAOtest.getAllMember();
+        List<MemberDTO> memberList = DAOtest.inquiryMember();
 
         for(int i = 0; i < memberList.size(); i++) {
             System.out.println(memberList.get(i));

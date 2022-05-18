@@ -16,7 +16,7 @@ public class HelloServlet extends HttpServlet {
         message = "Hello World!!!!!!!!!!!!!!!!!!!!!!!!!!";
         MemberDAO test = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
 //        String s = "";
-        s = test.getAllMember().get(0).toString();
+        s = test.inquiryMember().get(0).toString();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
