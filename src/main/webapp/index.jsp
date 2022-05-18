@@ -80,7 +80,7 @@
     <div class="intro">
         <div class="header">
             <div class="logo">
-                <hi>소공 체육센터</hi>
+                소공 체육센터
             </div>
             <!-- 지금 말고 나중에 검색기능에서 빼서 쓰면 될듯 -->
             <!-- <div class="searchArea">

@@ -12,13 +12,70 @@
         margin: 0 auto;
         width: 1200px;
     }
+
+    /*===============================================*/
+    *{
+        list-style: none;
+        /* 밑줄나오지 않게 하는 것 */
+        text-decoration: none;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        color: black;
+    }
+
+    .header{
+        display: flex;
+        width: 1280px;
+        margin: auto;
+        height:90px;
+        border: 2px solid;
+    }
+
+    .logo{
+        margin: 0 auto;
+        font-size: 24px;
+        width: 200px;
+        line-height: 90px;
+    }
+
+    .nav{
+        display: flex;
+        line-height: 90px;
+        width: 1000px;
+
+    }
+
+    .nav li{
+        margin-left: 80px;
+    }
+    /*===============================================*/
 </style>
 <head>
     <title>소공 체육센터</title>
 </head>
 <body>
-<h1><a href="/"> 소공 체육센터 </a></h1>
+
 <% MemberDAO memberDAO = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory()); %>
+
+<div class="wrap">
+    <div class="intro">
+        <div class="header">
+            <div class="logo">
+                <a href="/"> 소공 체육센터 </a>
+            </div>
+            <ul class="nav">
+                <li> <a href="/Member.jsp">회원관리</a>  </li>
+                <li> <a href="">강사관리</a> </li>
+                <li> <a href="">강습관리</a> </li>
+                <li> <a href="">공지관리</a> </li>
+                <li> <a href="">사물함관리</a> </li>
+                <li> <a href="">매출관리</a> </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class=""container>
     <div class="row">
@@ -33,8 +90,7 @@
             </tr>
             </thead>
 <%--            속도 엄청 오래걸림... 왜지?--%>
-<%--            memberDAO.getMemberCount()--%>
-            <% for(int i=0; i< 3; i++){ %>
+            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? --%>
             <tbody>
             <td><%= i + 1 %></td>
@@ -48,7 +104,6 @@
 
 
         </table>
-        <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
     </div>
 
 </div>
