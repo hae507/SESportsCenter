@@ -17,9 +17,7 @@
     <title>소공 체육센터</title>
 </head>
 <body>
-<h1>
-    소공 체육센터
-</h1>
+<h1><a href="/"> 소공 체육센터 </a></h1>
 <% MemberDAO memberDAO = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory()); %>
 
 <div class=""container>
@@ -35,7 +33,8 @@
             </tr>
             </thead>
 <%--            속도 엄청 오래걸림... 왜지?--%>
-            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>
+<%--            memberDAO.getMemberCount()--%>
+            <% for(int i=0; i< 3; i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? --%>
             <tbody>
             <td><%= i + 1 %></td>
