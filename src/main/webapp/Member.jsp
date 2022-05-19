@@ -50,29 +50,25 @@
         margin-left: 80px;
     }
 
+    .nav li{
+        margin-left: 80px;
+    }
+
     .searchArea{
-        margin-left: 200px;
-        width: 300px;
-        height: 40px;
-        background-color: rgb(0,0,0,0.5);
-        border-radius: 5px;
-        margin-top: 50px;
+        margin-top: 40px;
+        margin-left: 300px;
     }
 
-    .searchArea form input{
-        border: none;
-        width: 250px;
+    input[type=text]{
+        width: 200px;
         height: 40px;
+        vertical-align: top;
         padding-left: 10px;
-        background-color: white;
     }
-
-    .searchArea form span{
+    #searchBtn{
+        margin-left: -7px;
+        height: 44px;
         width: 50px;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-
     }
     /*===============================================*/
 
@@ -106,14 +102,14 @@
     </div>
 </div>
 <!-- 지금 말고 나중에 검색기능에서 빼서 쓰면 될듯 -->
-        <div class="searchArea">
-            <form>
-           <input type="search" placeholder="이름을 입력하시오">
-                <button id="searchBtn">검색</button>
-<%--           <span>검색</span>--%>
-        </form>
+<div class="searchArea">
+    <form action="">
+        <input type="hidden" name="boardId" value="&{param.boardId}" />
 
-        </div>
+        <input type="text" name="searchKeyword" placeholder="이름 입력">
+        <button id="searchBtn">검색</button>
+    </form>
+</div>
 
 <div class=""container>
     <div class="row">
