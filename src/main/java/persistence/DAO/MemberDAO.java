@@ -23,6 +23,13 @@ public class MemberDAO {
         return all;
     }
 
+    public List<MemberDTO> inquiryMemberByName(String name){
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<MemberDTO> list = mapper.getMemberByName(name);
+        return list;
+    }
+
     public int getMemberCount(){
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
@@ -30,7 +37,7 @@ public class MemberDAO {
         return count;
     }
 
-    // insert 후에 조회 자동으로 하게 구현, 중복되는 id가 있는경우 insert 못하게 : 추가할 사항
+    // insert 후에 조회 자동으로 하게 구현해야 함
     // 반환값 true면 등록 성공, false면 이미 있는 계정이라고 떠야 함
     public boolean registerMember(String id, String name, String password, String phoneNum){
         if(memberExists(id))
@@ -55,7 +62,7 @@ public class MemberDAO {
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
         try {
-            list = mapper.selectById(id);
+            list = mapper.getMemberById(id);
             session.commit();
         }catch (Exception e){
             e.printStackTrace();

@@ -1,5 +1,9 @@
 <%@ page import="persistence.DAO.MemberDAO" %>
 <%@ page import="persistence.MyBatisConnectionFactory" %>
+<%@ page import="persistence.DTO.MemberDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.io.PrintStream" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -96,20 +100,28 @@
                 <li> <a href="">공지관리</a> </li>
                 <li> <a href="">사물함관리</a> </li>
                 <li> <a href="">매출관리</a> </li>
-
             </ul>
         </div>
     </div>
 </div>
-<!-- 지금 말고 나중에 검색기능에서 빼서 쓰면 될듯 -->
+
 <div class="searchArea">
     <form action="">
-        <input type="hidden" name="boardId" value="&{param.boardId}" />
+        <input type="hidden" name="boardId" value="${param.boardId}" />
 
-        <input type="text" name="searchKeyword" placeholder="이름 입력">
-        <button id="searchBtn">검색</button>
+<%--        종류별로 선택?--%>
+<%--        <select name="searchKeywordType">--%>
+<%--            <option value="id"></option>--%>
+<%--            <option value="이름"></option>--%>
+<%--            <option value="이름2"></option>--%>
+<%--        </select>--%>
+
+        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">
+        <button id="searchBtn" onclick="search()">검색</button>
     </form>
 </div>
+    <% String keyword = request.getParameter("searchKeyword"); %>
+
 
 <div class=""container>
     <div class="row">
@@ -123,7 +135,7 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
-            <%--            속도 엄청 오래걸림... 왜지?--%>
+<%--                        속도 엄청 오래걸림... 왜지?--%>
 <%--            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>--%>
 <%--            &lt;%&ndash;            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기&ndash;%&gt;--%>
 <%--            <tbody>--%>
@@ -135,6 +147,27 @@
 <%--            </tbody>--%>
 
 <%--            <% }%>--%>
+
+
+<%--            작동 안함===================================================================================--%>
+            <script>
+                function search(){
+                    return(
+                    <% List<MemberDTO> memberList = memberDAO.inquiryMemberByName("소공");%>
+
+                    <%  for(int i=0; i< memberList.size(); i++){ %>
+                    <tbody>
+                    <td><%= i + 1 %></td>
+                    <td><%= memberList.get(i).getId() %></td>
+                    <td><%= memberList.get(i).getName() %></td>
+                    <td><%= memberList.get(i).getPassword() %></td>
+                    <td><%= memberList.get(i).getPhoneNum() %></td>
+                    </tbody>
+                    <% }%>
+                    );
+                }
+            </script>
+
 
 
         </table>

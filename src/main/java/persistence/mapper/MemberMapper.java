@@ -22,11 +22,15 @@ public interface MemberMapper {
             @Result(property = "count(*)", column = "count(*)"),
     })
     String getMemberCount();
+    final String SELECT_BY_NAME = "SELECT * FROM member WHERE name like  CONCAT('%',#{name},'%')";
+    @Select(SELECT_BY_NAME)
+    @ResultMap("resultSet")
+    List<MemberDTO> getMemberByName(String name);
 
     final String SELECT = "SELECT * FROM member WHERE id = #{id}";
     @Select(SELECT)
     @ResultMap("resultSet")
-    List<MemberDTO> selectById(String id);
+    List<MemberDTO> getMemberById(String id);
 
     final String INSERT = "insert into member (id, name, password, phoneNum) values(#{id}, #{name}, #{password}, #{phoneNum})";
     @Insert(INSERT)

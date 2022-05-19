@@ -4,6 +4,7 @@ import persistence.DAO.MemberDAO;
 import persistence.DTO.MemberDTO;
 import persistence.MyBatisConnectionFactory;
 
+import java.io.PrintWriter;
 import java.util.List;
 //import service.*;
 
@@ -23,8 +24,8 @@ public class ForTest {
         System.out.println(DAOtest.registerMember("se569", "김소공", "0101", "010-5432-1234"));
 
         System.out.println(DAOtest.getMemberCount());
-        List<MemberDTO> memberList = DAOtest.inquiryMember();
-
+        List<MemberDTO> memberList = DAOtest.inquiryMemberByName("소공");
+        PrintWriter pw;
         for(int i = 0; i < memberList.size(); i++) {
             System.out.println(memberList.get(i));
         }

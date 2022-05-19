@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+    <title>소공 체육센터</title>
+</head>
 
 <body>
 
