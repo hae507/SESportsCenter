@@ -31,7 +31,7 @@ CREATE TABLE `Locker` (
 	`lockerId`	VARCHAR(20)	NOT NULL,
 	`lockerLocation`	VARCHAR(30)	NOT NULL,
 	`rentalAmount`	DOUBLE	NOT NULL,
-	`rentalPeriod`	DATE	NOT NULL,
+	`rentalPeriod`	DATE	NULL,
 	`centerName`	VARCHAR(20)	NOT NULL
 );
 
