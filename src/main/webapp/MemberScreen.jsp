@@ -133,7 +133,7 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
-<%--                        속도 엄청 오래걸림... 왜지?--%>
+<%--                        속도 엄청 오래걸림... 왜지? 주석풀고 실행하시면 실행은 됩니다--%>
 <%--            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>--%>
 <%--            &lt;%&ndash;            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기&ndash;%&gt;--%>
 <%--            <tbody>--%>
