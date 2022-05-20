@@ -2,8 +2,6 @@
 <%@ page import="persistence.MyBatisConnectionFactory" %>
 <%@ page import="persistence.DTO.MemberDTO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.io.PrintStream" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -74,6 +72,12 @@
         height: 44px;
         width: 50px;
     }
+
+    #registerBtn{
+        margin-left: 550px;
+        height: 44px;
+        width: 80px;
+    }
     /*===============================================*/
 
     .row{
@@ -94,7 +98,7 @@
                 <a href="/"> 소공 체육센터 </a>
             </div>
             <ul class="nav">
-                <li> <a href="/Member.jsp">회원관리</a>  </li>
+                <li> <a href="/MemberScreen.jsp">회원관리</a>  </li>
                 <li> <a href="">강사관리</a> </li>
                 <li> <a href="">강습관리</a> </li>
                 <li> <a href="">공지관리</a> </li>
@@ -109,15 +113,9 @@
     <form action="">
         <input type="hidden" name="boardId" value="${param.boardId}" />
 
-<%--        종류별로 선택?--%>
-<%--        <select name="searchKeywordType">--%>
-<%--            <option value="id"></option>--%>
-<%--            <option value="이름"></option>--%>
-<%--            <option value="이름2"></option>--%>
-<%--        </select>--%>
-
         <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">
         <button id="searchBtn" onclick="search()">검색</button>
+        <input id="registerBtn" type="button" value="회원등록" onclick="location.href='/RegisterMemberScreen.jsp'"/>
     </form>
 </div>
     <% String keyword = request.getParameter("searchKeyword"); %>
@@ -167,7 +165,7 @@
                     );
                 }
             </script>
-
+<%--            작동 안함===================================================================================--%>
 
 
         </table>
