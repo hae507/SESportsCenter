@@ -6,17 +6,18 @@ CREATE TABLE `Member` (
 );
 
 CREATE TABLE `Instructor` (
-	`instructor_id`	VARCHAR(20)	NOT NULL,
-	`instructor_pw`	VARCHAR(20)	NOT NULL,
-	`instructor_name`	VARCHAR(20)	NOT NULL,
-	`instructor_phone`	VARCHAR(15)	NOT NULL,
-	`instructor_ssn`	VARCHAR(20)	NOT NULL,
-	`instructor_add`	VARCHAR(50)	NOT NULL
+	`instructorNum`	VARCHAR(20)	NOT NULL,
+	`instructorId`	VARCHAR(20)	NOT NULL,
+	`instructorPw`	VARCHAR(20)	NOT NULL,
+	`instructorName`	VARCHAR(20)	NOT NULL,
+	`instructorPhone`	VARCHAR(15)	NOT NULL,
+	`instructorSsn`	VARCHAR(20)	NOT NULL,
+	`instructorAdd`	VARCHAR(50)	NOT NULL
 );
 
 CREATE TABLE `Lesson` (
 	`LessonId`	VARCHAR(20)	NOT NULL,
-	`instructor_id`	VARCHAR(20)	NOT NULL,
+	`instructorNum`	INT	NOT NULL,
 	`LessonName`	VARCHAR(30)	NOT NULL,
 	`LessonTime`	TIME	NOT NULL,
 	`LessonStartTime`	TIME	NOT NULL,
@@ -41,7 +42,8 @@ CREATE TABLE `Sales` (
 	`EnrollLockerNum`	INT	NULL,
 	`amount`	INT	NOT NULL,
 	`date`	DATE	NOT NULL,
-	`center`	VARCHAR(20)	NOT NULL
+	`center`	VARCHAR(20)	NOT NULL,
+	`instructorNum`	INT	NOT NULL
 );
 
 CREATE TABLE `Notice` (
@@ -54,7 +56,8 @@ CREATE TABLE `Notice` (
 CREATE TABLE `EnrollLesson` (
 	`enrollLessonNum`	INT	NOT NULL,
 	`id`	VARCHAR(20)	NOT NULL,
-	`LessonId`	VARCHAR(20)	NOT NULL
+	`LessonId`	VARCHAR(20)	NOT NULL,
+	`instructorNum`	INT	NOT NULL
 );
 
 CREATE TABLE `EnrollLocker` (
@@ -68,7 +71,7 @@ ALTER TABLE `Member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
 );
 
 ALTER TABLE `Instructor` ADD CONSTRAINT `PK_INSTRUCTOR` PRIMARY KEY (
-	`instructor_id`
+	`instructorNum`
 );
 
 ALTER TABLE `Lesson` ADD CONSTRAINT `PK_LESSON` PRIMARY KEY (
