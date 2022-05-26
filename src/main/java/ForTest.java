@@ -1,6 +1,6 @@
 //import persistence.MyBatisConnectionFactory;
 //import persistence.dao.*;
-import persistence.DAO.MemberDAO;
+import persistence.Control.MemberControl;
 import persistence.DTO.MemberDTO;
 import persistence.MyBatisConnectionFactory;
 
@@ -18,7 +18,7 @@ public class ForTest {
     public static void main(String args[]){
 
 //        MemberDTO memberDTO;
-        MemberDAO DAOtest = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
+        MemberControl DAOtest = new MemberControl(MyBatisConnectionFactory.getSqlSessionFactory());
 
         MemberDTO DTOtest = new MemberDTO();
         System.out.println(DAOtest.registerMember("se569", "김소공", "0101", "010-5432-1234"));

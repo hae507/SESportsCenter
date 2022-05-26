@@ -1,4 +1,4 @@
-package persistence.DAO;
+package persistence.Control;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,11 +8,11 @@ import persistence.mapper.MemberMapper;
 
 import java.util.List;
 
-public class MemberDAO {
+public class MemberControl {
 
     private SqlSessionFactory sqlSessionFactory = null;
 
-    public MemberDAO(SqlSessionFactory sqlSessionFactory){
+    public MemberControl(SqlSessionFactory sqlSessionFactory){
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
@@ -37,8 +37,7 @@ public class MemberDAO {
         return count;
     }
 
-    // insert 후에 조회 자동으로 하게 구현해야 함
-    // 반환값 true면 등록 성공, false면 이미 있는 계정이라고 떠야 함
+    // 반환값 true면 등록 성공, false면 실패
     public boolean registerMember(String id, String name, String password, String phoneNum){
         if(memberExists(id))
             return false;

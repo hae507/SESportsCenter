@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import persistence.DAO.MemberDAO;
+import persistence.Control.MemberControl;
 import persistence.MyBatisConnectionFactory;
 
 import java.io.*;
@@ -14,7 +14,7 @@ public class HelloServlet extends HttpServlet {
 
     public void init() {
         message = "Hello World!!!!!!!!!!!!!!!!!!!!!!!!!!";
-        MemberDAO test = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
+        MemberControl test = new MemberControl(MyBatisConnectionFactory.getSqlSessionFactory());
 //        String s = "";
         s = test.inquiryMember().get(0).toString();
     }

@@ -1,4 +1,4 @@
-<%@ page import="persistence.DAO.MemberDAO" %>
+<%@ page import="persistence.Control.MemberControl" %>
 <%@ page import="persistence.MyBatisConnectionFactory" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
@@ -6,7 +6,7 @@
 </head>
 <body>
 <%
-    MemberDAO memberDAO = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory());
+    MemberControl memberControl = new MemberControl(MyBatisConnectionFactory.getSqlSessionFactory());
 
     request.setCharacterEncoding("utf-8");
 
@@ -26,7 +26,7 @@
                 <%
     }
 
-    boolean success = memberDAO.registerMember(id, name, password, phoneNum);
+    boolean success = memberControl.registerMember(id, name, password, phoneNum);
 
     if(success){
         %>

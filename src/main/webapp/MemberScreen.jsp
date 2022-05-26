@@ -1,7 +1,8 @@
-<%@ page import="persistence.DAO.MemberDAO" %>
+<%@ page import="persistence.Control.MemberControl" %>
 <%@ page import="persistence.MyBatisConnectionFactory" %>
 <%@ page import="persistence.DTO.MemberDTO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="persistence.Control.MemberControl" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -89,7 +90,7 @@
 </head>
 <body>
 
-<% MemberDAO memberDAO = new MemberDAO(MyBatisConnectionFactory.getSqlSessionFactory()); %>
+<% MemberControl memberControl = new MemberControl(MyBatisConnectionFactory.getSqlSessionFactory()); %>
 
 <div class="wrap">
     <div class="intro">
@@ -110,11 +111,13 @@
 </div>
 
 <div class="searchArea">
-    <form action="">
-        <input type="hidden" name="boardId" value="${param.boardId}" />
+    <form method="post" action="InquiryMember.jsp">
+<%--        <input type="hidden" name="boardId" value="${param.boardId}" />--%>
 
-        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">
-        <button id="searchBtn" onclick="search()">검색</button>
+<%--        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">--%>
+        <input type="text" name="keyword" placeholder="이름 입력">
+<%--        <button id="searchBtn" onclick="search()">검색</button>--%>
+        <button id="searchBtn"> 검색 </button>
         <input id="registerBtn" type="button" value="회원등록" onclick="location.href='/RegisterMemberScreen.jsp'"/>
     </form>
 </div>
@@ -133,9 +136,11 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
+            <% String k = request.getParameter("keyword");
+                System.out.println("keyword : " + k);%>
 
-            <% List<MemberDTO> list = memberDAO.inquiryMember(); %>
-<%--                        속도 개선       --%>
+            <% List<MemberDTO> list = memberControl.inquiryMember(); %>
+
             <% for(int i=0; i< list.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
             <tbody>
@@ -149,32 +154,28 @@
             <% }%>
 
 
-<%--            작동 안함===================================================================================--%>
-<%--            <script>--%>
+<%--        <script>--%>
 <%--                function search(){--%>
 <%--                    return(--%>
-<%--                    <% List<MemberDTO> memberList = memberDAO.inquiryMemberByName("소공");%>--%>
+<%--                    <% List<MemberDTO> inquiryList = memberControl.inquiryMemberByName(keyword);%>--%>
 
-<%--                    <%  for(int i=0; i< memberList.size(); i++){ %>--%>
+<%--                    <%  for(int i=0; i< inquiryList.size(); i++){ %>--%>
 <%--                    <tbody>--%>
 <%--                    <td><%= i + 1 %></td>--%>
-<%--                    <td><%= memberList.get(i).getId() %></td>--%>
-<%--                    <td><%= memberList.get(i).getName() %></td>--%>
-<%--                    <td><%= memberList.get(i).getPassword() %></td>--%>
-<%--                    <td><%= memberList.get(i).getPhoneNum() %></td>--%>
+<%--                    <td><%= inquiryList.get(i).getId() %></td>--%>
+<%--                    <td><%= inquiryList.get(i).getName() %></td>--%>
+<%--                    <td><%= inquiryList.get(i).getPassword() %></td>--%>
+<%--                    <td><%= inquiryList.get(i).getPhoneNum() %></td>--%>
 <%--                    </tbody>--%>
 <%--                    <% }%>--%>
 <%--                    );--%>
 <%--                }--%>
 <%--            </script>--%>
-<%--            작동 안함===================================================================================--%>
-
 
         </table>
     </div>
 
 </div>
-
 
 </body>
 </html>
