@@ -2,7 +2,7 @@ package persistence.Control;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import persistence.DTO.MemberDTO;
+import persistence.Entity.Member;
 //import persistence.PooledDataSource;
 import persistence.mapper.MemberMapper;
 
@@ -16,17 +16,17 @@ public class MemberControl {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
-    public List<MemberDTO> inquiryMember(){
+    public List<Member> inquiryMember(){
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
-        List<MemberDTO> all = mapper.getAllMember();
+        List<Member> all = mapper.getAllMember();
         return all;
     }
 
-    public List<MemberDTO> inquiryMemberByName(String name){
+    public List<Member> inquiryMemberByName(String name){
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
-        List<MemberDTO> list = mapper.getMemberByName(name);
+        List<Member> list = mapper.getMemberByName(name);
         return list;
     }
 
@@ -41,11 +41,11 @@ public class MemberControl {
     public boolean registerMember(String id, String name, String password, String phoneNum){
         if(memberExists(id))
             return false;
-        MemberDTO memberDTO = new MemberDTO(id, name, password, phoneNum);
+        Member member = new Member(id, name, password, phoneNum);
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
         try {
-            mapper.insertMember(memberDTO);
+            mapper.insertMember(member);
             session.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +57,7 @@ public class MemberControl {
     }
 
     private boolean memberExists(String id){
-        List<MemberDTO> list = null;
+        List<Member> list = null;
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);
         try {

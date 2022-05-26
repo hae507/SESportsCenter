@@ -1,4 +1,4 @@
-package persistence.DTO;
+package persistence.Entity;
 
 import lombok.Setter;
 import lombok.Getter;
@@ -6,16 +6,16 @@ import lombok.Getter;
 @Setter
 @Getter
 
-public class MemberDTO {
+public class Member {
     private String id;
     private String name;
     private String password;
     private String phoneNum;
 
-    public MemberDTO(){
+    public Member(){
 
     }
-    public MemberDTO(String id, String name, String password, String phoneNum){
+    public Member(String id, String name, String password, String phoneNum){
         this.id = id;
         this.name = name;
         this.password = password;

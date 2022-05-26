@@ -6,7 +6,7 @@
 <!--쓰지않는 파일입니다. 마지막에 삭제 예정입니다-->
 
 <mapper namespace="mapper.memberMapper">
-<!--    <resultMap id="result" type="persistence.DTO.MemberDTO">-->
+<!--    <resultMap id="result" type="persistence.Entity.Member">-->
 <!--        <result property="id" column="id"/>-->
 <!--        <result property="name" column="name"/>-->
 <!--        <result property="password" column="password"/>-->

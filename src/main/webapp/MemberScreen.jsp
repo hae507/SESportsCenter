@@ -1,6 +1,6 @@
 <%@ page import="persistence.Control.MemberControl" %>
 <%@ page import="persistence.MyBatisConnectionFactory" %>
-<%@ page import="persistence.DTO.MemberDTO" %>
+<%@ page import="persistence.Entity.Member" %>
 <%@ page import="java.util.List" %>
 <%@ page import="persistence.Control.MemberControl" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -139,7 +139,7 @@
             <% String k = request.getParameter("keyword");
                 System.out.println("keyword : " + k);%>
 
-            <% List<MemberDTO> list = memberControl.inquiryMember(); %>
+            <% List<Member> list = memberControl.inquiryMember(); %>
 
             <% for(int i=0; i< list.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
