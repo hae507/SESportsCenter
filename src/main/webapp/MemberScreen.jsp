@@ -133,38 +133,40 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
-<%--                        속도 엄청 오래걸림... 왜지? 주석풀고 실행하시면 실행은 됩니다--%>
-<%--            <% for(int i=0; i< memberDAO.getMemberCount(); i++){ %>--%>
-<%--            &lt;%&ndash;            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기&ndash;%&gt;--%>
-<%--            <tbody>--%>
-<%--            <td><%= i + 1 %></td>--%>
-<%--            <td><%= memberDAO.inquiryMember().get(i).getId() %></td>--%>
-<%--            <td><%= memberDAO.inquiryMember().get(i).getName() %></td>--%>
-<%--            <td><%= memberDAO.inquiryMember().get(i).getPassword() %></td>--%>
-<%--            <td><%= memberDAO.inquiryMember().get(i).getPhoneNum() %></td>--%>
-<%--            </tbody>--%>
 
-<%--            <% }%>--%>
+            <% List<MemberDTO> list = memberDAO.inquiryMember(); %>
+<%--                        속도 개선       --%>
+            <% for(int i=0; i< list.size(); i++){ %>
+            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
+            <tbody>
+            <td><%= i + 1 %></td>
+            <td><%= list.get(i).getId() %></td>
+            <td><%= list.get(i).getName() %></td>
+            <td><%= list.get(i).getPassword() %></td>
+            <td><%= list.get(i).getPhoneNum() %></td>
+            </tbody>
+
+            <% }%>
 
 
 <%--            작동 안함===================================================================================--%>
-            <script>
-                function search(){
-                    return(
-                    <% List<MemberDTO> memberList = memberDAO.inquiryMemberByName("소공");%>
+<%--            <script>--%>
+<%--                function search(){--%>
+<%--                    return(--%>
+<%--                    <% List<MemberDTO> memberList = memberDAO.inquiryMemberByName("소공");%>--%>
 
-                    <%  for(int i=0; i< memberList.size(); i++){ %>
-                    <tbody>
-                    <td><%= i + 1 %></td>
-                    <td><%= memberList.get(i).getId() %></td>
-                    <td><%= memberList.get(i).getName() %></td>
-                    <td><%= memberList.get(i).getPassword() %></td>
-                    <td><%= memberList.get(i).getPhoneNum() %></td>
-                    </tbody>
-                    <% }%>
-                    );
-                }
-            </script>
+<%--                    <%  for(int i=0; i< memberList.size(); i++){ %>--%>
+<%--                    <tbody>--%>
+<%--                    <td><%= i + 1 %></td>--%>
+<%--                    <td><%= memberList.get(i).getId() %></td>--%>
+<%--                    <td><%= memberList.get(i).getName() %></td>--%>
+<%--                    <td><%= memberList.get(i).getPassword() %></td>--%>
+<%--                    <td><%= memberList.get(i).getPhoneNum() %></td>--%>
+<%--                    </tbody>--%>
+<%--                    <% }%>--%>
+<%--                    );--%>
+<%--                }--%>
+<%--            </script>--%>
 <%--            작동 안함===================================================================================--%>
 
 
