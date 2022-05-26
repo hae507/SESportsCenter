@@ -91,7 +91,7 @@
         border-radius: 6px;
         outline: none;
     }
-    input[type="button"] {
+    button {
         width: 320px;
         height: 35px;
         margin-top: 20px;
@@ -127,18 +127,18 @@
 
 <div class="box">
     <h1>회원 등록</h1>
-    <form>
+    <form action="RegisterMember.jsp" method="post">
         <label>아이디</label>
-        <input type="text" placeholder="" />
+        <input type="text" name="id"/>
         <label>이름</label>
-        <input type="text" placeholder="" />
+        <input type="text" name="name"/>
         <label>비밀번호</label>
-        <input type="email" placeholder="" />
+        <input type="text" name="password"/>
         <label>비밀번호 확인</label>
-        <input type="password" placeholder="" />
+        <input type="text" name="password2"/>
         <label>전화번호</label>
-        <input type="password" placeholder="" />
-        <input type="button" value="확인" />
+        <input type="text" name="phoneNum"/>
+        <button type="submit">확인</button>
     </form>
 </div>
 
