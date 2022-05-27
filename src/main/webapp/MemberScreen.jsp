@@ -111,7 +111,7 @@
 </div>
 
 <div class="searchArea">
-    <form method="post" action="InquiryMember.jsp">
+    <form method="post" action="MemberScreen.jsp">
 <%--        <input type="hidden" name="boardId" value="${param.boardId}" />--%>
 
 <%--        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">--%>
@@ -121,8 +121,7 @@
         <input id="registerBtn" type="button" value="회원등록" onclick="location.href='/RegisterMemberScreen.jsp'"/>
     </form>
 </div>
-    <% String keyword = request.getParameter("searchKeyword"); %>
-
+<%--    <% String keyword = request.getParameter("searchKeyword"); %>--%>
 
 <div class=""container>
     <div class="row">
@@ -136,10 +135,13 @@
                 <th style="background-color: #eeeeee; text-align: center">전화번호</th>
             </tr>
             </thead>
-            <% String k = request.getParameter("keyword");
-                System.out.println("keyword : " + k);%>
+            <% request.setCharacterEncoding("utf-8");
+                String keyword = request.getParameter("keyword");
+                System.out.println("위 keyword : " + keyword);%>
 
-            <% List<Member> list = memberControl.inquiryMember(); %>
+            <% if(keyword == null){
+
+            List<Member> list = memberControl.inquiryMember(); %>
 
             <% for(int i=0; i< list.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
@@ -151,26 +153,26 @@
             <td><%= list.get(i).getPhoneNum() %></td>
             </tbody>
 
-            <% }%>
+            <%
+                }
+            } else {
+                    List<Member> memberList = memberControl.inquiryMemberByName(keyword);
+                    System.out.println("keyword : " + keyword);
+            %>
+            <% for(int i=0; i< memberList.size(); i++){ %>
+            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
+            <tbody>
+            <td><%= i + 1 %></td>
+            <td><%= memberList.get(i).getId() %></td>
+            <td><%= memberList.get(i).getName() %></td>
+            <td><%= memberList.get(i).getPassword() %></td>
+            <td><%= memberList.get(i).getPhoneNum() %></td>
+            </tbody>
+            <%
+                }
+            }
+            %>
 
-
-<%--        <script>--%>
-<%--                function search(){--%>
-<%--                    return(--%>
-<%--                    <% List<MemberDTO> inquiryList = memberControl.inquiryMemberByName(keyword);%>--%>
-
-<%--                    <%  for(int i=0; i< inquiryList.size(); i++){ %>--%>
-<%--                    <tbody>--%>
-<%--                    <td><%= i + 1 %></td>--%>
-<%--                    <td><%= inquiryList.get(i).getId() %></td>--%>
-<%--                    <td><%= inquiryList.get(i).getName() %></td>--%>
-<%--                    <td><%= inquiryList.get(i).getPassword() %></td>--%>
-<%--                    <td><%= inquiryList.get(i).getPhoneNum() %></td>--%>
-<%--                    </tbody>--%>
-<%--                    <% }%>--%>
-<%--                    );--%>
-<%--                }--%>
-<%--            </script>--%>
 
         </table>
     </div>
