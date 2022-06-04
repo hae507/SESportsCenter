@@ -33,7 +33,7 @@ public interface MemberMapper {
     @ResultMap("resultSet")
     List<Member> getMemberById2(String id);
 
-    final String SELECT_BY_PW = "SELECT * FROM member WHERE password like  CONCAT('%',#{password},'%')";
+    final String SELECT_BY_PW = "SELECT * FROM member WHERE password like CONCAT('%',#{password},'%')";
     @Select(SELECT_BY_PW)
     @ResultMap("resultSet")
     List<Member> getMemberByPw(String password);
