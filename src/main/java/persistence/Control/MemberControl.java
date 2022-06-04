@@ -72,6 +72,23 @@ public class MemberControl {
         return !list.isEmpty();
     }
 
+    public Member findById(String id){
+        Member member = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        try{
+            member = mapper.findById(id);
+            session.commit();
+        } catch(Exception e){
+            e.printStackTrace();
+            session.rollback();
+        }
+        finally{
+            session.close();
+        }
+        return member;
+    }
+
 
 
 }

@@ -12,7 +12,7 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
 <!--                sesportscenter가 스키마의 이름-->
-                <property name="url" value="jdbc:mysql://localhost/sesportscenter?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useSSL=false"/>
+                <property name="url" value="jdbc:mysql://localhost/seeportscenter_lesson?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useSSL=false"/>
                 <property name="username" value="root"/>
 <!--                비밀번호 변경 필요합니다-->
                 <property name="password" value="chan5542"/>

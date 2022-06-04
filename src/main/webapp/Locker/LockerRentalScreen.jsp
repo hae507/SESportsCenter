@@ -8,10 +8,10 @@
 </head>
 
 <body>
+
 <style>
     *{
         list-style: none;
-        /* 밑줄나오지 않게 하는 것 */
         text-decoration: none;
         border-collapse: collapse;
         margin: 0;
@@ -49,15 +49,6 @@
         margin-left: 80px;
     }
 
-    .form{
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-
     .box {
         border: 1px solid;
         width: 360px;
@@ -91,12 +82,14 @@
         border-radius: 6px;
         outline: none;
     }
+
     button {
         width: 320px;
         height: 35px;
         margin-top: 20px;
         border: none;
         background-color: #49c1a2;
+        border-radius: 6px;
         color: white;
         font-size: 18px;
     }
@@ -105,19 +98,17 @@
 </style>
 
 <div class="wrap">
-    <!-- 상단 배너? 클래스명 -->
     <div class="intro">
-        <!-- 검색, 상단 배너의 container -->
         <div class="header">
             <div class="logo">
                 <a href="/"> 소공 체육센터 </a>
             </div>
             <ul class="nav">
-                <li> <a href="/MemberScreen.jsp">회원관리</a>  </li>
-                <li> <a href="">강사관리</a> </li>
-                <li> <a href="">강습관리</a> </li>
+                <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
+                <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
+                <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>
                 <li> <a href="">공지관리</a> </li>
-                <li> <a href="">사물함관리</a> </li>
+                <li> <a href="/Locker/InsertLockerScreen.jsp">사물함관리</a> </li>
                 <li> <a href="">매출관리</a> </li>
 
             </ul>
@@ -126,21 +117,21 @@
 </div>
 
 <div class="box">
-    <h1>회원 등록</h1>
-    <form action="RegisterMember.jsp" method="post">
-        <label>아이디</label>
-        <input type="text" name="id"/>
-        <label>이름</label>
-        <input type="text" name="name"/>
-        <label>비밀번호</label>
-        <input type="text" name="password"/>
-        <label>비밀번호 확인</label>
-        <input type="text" name="password2"/>
-        <label>전화번호</label>
-        <input type="text" name="phoneNum"/>
-        <button type="submit">확인</button>
+    <h1>사물함 신청</h1>
+    <form action="/Locker/LockerRental.jsp" method="post">
+        <label>회원 ID</label>
+        <input type="text" name="id" placeholder="" required="required"/>
+        <label>사물함 ID</label>
+        <input type="text" name="lockerId" placeholder="" required="required" />
+        <label>대여날짜</label>
+        <input type="date" name="rentalPeriod" placeholder="" required="required" />
+
+        <button type="submit">신청</button>
+
+<%--        <button type="submit" onclick="alert('사물함 신청 완료')">신청</button>--%>
     </form>
 </div>
+
 
 
 

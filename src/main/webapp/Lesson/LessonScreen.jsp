@@ -1,11 +1,9 @@
-<%@ page import="persistence.Control.MemberControl" %>
+<%@ page import="persistence.Control.LessonControl" %>
 <%@ page import="persistence.MyBatisConnectionFactory" %>
-<%@ page import="persistence.Entity.Member" %>
+<%@ page import="persistence.Entity.Lesson" %>
 <%@ page import="java.util.List" %>
-<%@ page import="persistence.Control.MemberControl" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-<!DOCTYPE html>
+<%@ page import="persistence.Control.LessonControl" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <style>
     table, th, td {
@@ -89,8 +87,10 @@
     <title>소공 체육센터</title>
 </head>
 <body>
+<% LessonControl lessonControl = new LessonControl(MyBatisConnectionFactory.getSqlSessionFactory());
+request.setCharacterEncoding("utf-8");
 
-<% MemberControl memberControl = new MemberControl(MyBatisConnectionFactory.getSqlSessionFactory()); %>
+%>
 
 <div class="wrap">
     <div class="intro">
@@ -99,11 +99,11 @@
                 <a href="/"> 소공 체육센터 </a>
             </div>
             <ul class="nav">
-                <li> <a href="/MemberScreen.jsp">회원관리</a>  </li>
-                <li> <a href="">강사관리</a> </li>
-                <li> <a href="">강습관리</a> </li>
+                <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
+                <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
+                <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>
                 <li> <a href="">공지관리</a> </li>
-                <li> <a href="">사물함관리</a> </li>
+                <li> <a href="/Locker/InsertLockerScreen.jsp">사물함관리</a> </li>
                 <li> <a href="">매출관리</a> </li>
             </ul>
         </div>
@@ -111,14 +111,16 @@
 </div>
 
 <div class="searchArea">
-    <form method="post" action="MemberScreen.jsp">
-<%--        <input type="hidden" name="boardId" value="${param.boardId}" />--%>
+    <form method="post" action="/Lesson/LessonScreen.jsp">
+        <%--        <input type="hidden" name="boardId" value="${param.boardId}" />--%>
 
-<%--        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">--%>
+        <%--        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">--%>
         <input type="text" name="keyword" placeholder="이름 입력">
-<%--        <button id="searchBtn" onclick="search()">검색</button>--%>
+        <%--        <button id="searchBtn" onclick="search()">검색</button>--%>
         <button id="searchBtn"> 검색 </button>
-        <input id="registerBtn" type="button" value="회원등록" onclick="location.href='/RegisterMemberScreen.jsp'"/>
+        <input id="registerBtn" type="button" value="강습 등록" onclick="location.href='/Lesson/RegisterLessonScreen.jsp'"/>
+            <input id="registerBtn" type="button" style="margin-left:0px;" value="수강 신청" onclick="location.href='/Lesson/EnrollLesson.jsp'"/>
+
     </form>
 </div>
 <%--    <% String keyword = request.getParameter("searchKeyword"); %>--%>
@@ -129,10 +131,13 @@
             <thead>
             <tr>
                 <th style="background-color: #eeeeee; text-align: center">No.</th>
-                <th style="background-color: #eeeeee; text-align: center">ID</th>
-                <th style="background-color: #eeeeee; text-align: center">이름</th>
-                <th style="background-color: #eeeeee; text-align: center">비밀번호</th>
-                <th style="background-color: #eeeeee; text-align: center">전화번호</th>
+                <th style="background-color: #eeeeee; text-align: center">강습ID</th>
+                <th style="background-color: #eeeeee; text-align: center">강사ID</th>
+                <th style="background-color: #eeeeee; text-align: center">강습 이름</th>
+                <th style="background-color: #eeeeee; text-align: center">강습 시간</th>
+                <th style="background-color: #eeeeee; text-align: center">강습 가격</th>
+                <th style="background-color: #eeeeee; text-align: center">강습 할인율</th>
+                <th style="background-color: #eeeeee; text-align: center">체육센터명</th>
             </tr>
             </thead>
             <% request.setCharacterEncoding("utf-8");
@@ -141,36 +146,43 @@
 
             <% if(keyword == null){
 
-            List<Member> list = memberControl.inquiryMember(); %>
+                List<Lesson> list = lessonControl.inquiryLesson(); %>
+
 
             <% for(int i=0; i< list.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
             <tbody>
             <td><%= i + 1 %></td>
-            <td><%= list.get(i).getId() %></td>
-            <td><%= list.get(i).getName() %></td>
-            <td><%= list.get(i).getPassword() %></td>
-            <td><%= list.get(i).getPhoneNum() %></td>
+            <td><%= list.get(i).getLessonId() %></td>
+            <td><%= list.get(i).getInstructorNum()%></td>
+            <td><%= list.get(i).getLessonName()%></td>
+            <td><%= list.get(i).getLessonDay() + list.get(i).getLessonTime()%></td>
+            <td><%= list.get(i).getLessonPrice()%></td>
+            <td><%= list.get(i).getLessonDCRate()%></td>
+            <td><%= list.get(i).getSportsCenterName()%></td>
             </tbody>
 
             <%
                 }
             } else {
-                    List<Member> memberList = memberControl.inquiryMemberByName(keyword);
-                    System.out.println("keyword : " + keyword);
+                List<Lesson> lessonList = lessonControl.inquiryLessonByName(keyword);
+                System.out.println("keyword : " + keyword);
             %>
-            <% for(int i=0; i< memberList.size(); i++){ %>
+            <% for(int i=0; i< lessonList.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
             <tbody>
             <td><%= i + 1 %></td>
-            <td><%= memberList.get(i).getId() %></td>
-            <td><%= memberList.get(i).getName() %></td>
-            <td><%= memberList.get(i).getPassword() %></td>
-            <td><%= memberList.get(i).getPhoneNum() %></td>
+            <td><%= lessonList.get(i).getLessonId() %></td>
+            <td><%= lessonList.get(i).getInstructorNum() %></td>
+            <td><%= lessonList.get(i).getLessonName() %></td>
+            <td><%= lessonList.get(i).getLessonDay() + lessonList.get(i).getLessonTime()%></td>
+            <td><%= lessonList.get(i).getLessonPrice() %></td>
+            <td><%= lessonList.get(i).getLessonDCRate() %></td>
+            <td><%= lessonList.get(i).getSportsCenterName() %></td>
             </tbody>
             <%
+                    }
                 }
-            }
             %>
 
 

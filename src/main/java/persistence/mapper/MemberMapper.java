@@ -22,6 +22,7 @@ public interface MemberMapper {
             @Result(property = "count(*)", column = "count(*)"),
     })
     String getMemberCount();
+
     final String SELECT_BY_NAME = "SELECT * FROM member WHERE name like  CONCAT('%',#{name},'%')";
     @Select(SELECT_BY_NAME)
     @ResultMap("resultSet")
@@ -36,5 +37,9 @@ public interface MemberMapper {
     @Insert(INSERT)
     @ResultMap("resultSet")
     public void insertMember(Member member);
+
+    @Select("select * from member where id=#{id}")
+    @ResultMap("resultSet")
+    Member findById(String id);
 
 }

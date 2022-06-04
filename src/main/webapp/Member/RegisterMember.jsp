@@ -20,11 +20,12 @@
                 %>
                 <script>
                     alert("비밀번호가 다릅니다 다시 확인하여 주세요");
-                    location.href="/RegisterMemberScreen.jsp";
+                    location.href="/Member//RegisterMemberScreen.jsp";
                     history.back();
                 </script>
                 <%
     }
+    else {
 
     boolean success = memberControl.registerMember(id, name, password, phoneNum);
 
@@ -32,7 +33,7 @@
         %>
             <script>
                 alert("회원가입 성공");
-                location.href="/MemberScreen.jsp";
+                location.href="/Member//MemberScreen.jsp";
             </script>
         <%
     }
@@ -40,11 +41,11 @@
         %>
             <script>
                 alert("회원가입 실패. 중복된 아이디가 존재합니다.");
-                location.href="/RegisterMemberScreen.jsp";
+                location.href="/Member//RegisterMemberScreen.jsp";
                 history.back();
             </script>
         <%
-    }
+    }   }
 %>
 </body>
 </html>

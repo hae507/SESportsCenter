@@ -1,3 +1,5 @@
+enrollLesson, EnrollLocker, instructor, sales AI설정 필요
+
 CREATE TABLE `Member` (
 	`id`	VARCHAR(20)	NOT NULL,
 	`name`	VARCHAR(10)	NOT NULL,
@@ -6,23 +8,21 @@ CREATE TABLE `Member` (
 );
 
 CREATE TABLE `Instructor` (
-	`instructorNum`	VARCHAR(20)	NOT NULL,
+	`instructorNum`	INT	NOT NULL,
 	`instructorId`	VARCHAR(20)	NOT NULL,
 	`instructorPw`	VARCHAR(20)	NOT NULL,
 	`instructorName`	VARCHAR(20)	NOT NULL,
 	`instructorPhone`	VARCHAR(15)	NOT NULL,
 	`instructorSsn`	VARCHAR(20)	NOT NULL,
-	`instructorAdd`	VARCHAR(50)	NOT NULL
+	`instructorAdd`	VARCHAR(100)	NOT NULL
 );
 
 CREATE TABLE `Lesson` (
 	`LessonId`	VARCHAR(20)	NOT NULL,
 	`instructorNum`	INT	NOT NULL,
 	`LessonName`	VARCHAR(30)	NOT NULL,
-	`LessonTime`	TIME	NOT NULL,
-	`LessonStartTime`	TIME	NOT NULL,
-	`LessonEndTime`	TIME	NOT NULL,
-	`LessonAvailDate`	DATE	NOT NULL,
+	`LessonDay`	VARCHAR(2)	NOT NULL,
+	`LessonTime`	VARCHAR(20)	NOT NULL,
 	`LessonPrice`	INT	NOT NULL,
 	`LessonDCRate`	INT	NOT NULL,
 	`SportsCenterName`	VARCHAR(20)	NOT NULL
@@ -32,18 +32,16 @@ CREATE TABLE `Locker` (
 	`lockerId`	VARCHAR(20)	NOT NULL,
 	`lockerLocation`	VARCHAR(30)	NOT NULL,
 	`rentalAmount`	DOUBLE	NOT NULL,
-	`rentalPeriod`	DATE	NULL,
 	`centerName`	VARCHAR(20)	NOT NULL
 );
 
 CREATE TABLE `Sales` (
-	`SalesNum`	VARCHAR(20)	NOT NULL,
+	`SalesNum`	INT	NOT NULL,
 	`enrollLessonNum`	INT	NULL,
 	`EnrollLockerNum`	INT	NULL,
 	`amount`	INT	NOT NULL,
 	`date`	DATE	NOT NULL,
-	`center`	VARCHAR(20)	NOT NULL,
-	`instructorNum`	INT	NOT NULL
+	`center`	VARCHAR(20)	NOT NULL
 );
 
 CREATE TABLE `Notice` (
@@ -57,13 +55,18 @@ CREATE TABLE `EnrollLesson` (
 	`enrollLessonNum`	INT	NOT NULL,
 	`id`	VARCHAR(20)	NOT NULL,
 	`LessonId`	VARCHAR(20)	NOT NULL,
-	`instructorNum`	INT	NOT NULL
+	`instructorNum`	INT	NOT NULL,
+	`LessonDay`	VARCHAR(2)	NOT NULL,
+	`LessonTime`	VARCHAR(20)	NOT NULL,
+	`paymentDate`	DATE	NOT NULL
 );
 
 CREATE TABLE `EnrollLocker` (
 	`EnrollLockerNum`	INT	NOT NULL,
 	`id`	VARCHAR(20)	NOT NULL,
-	`lockerId`	VARCHAR(20)	NOT NULL
+	`lockerId`	VARCHAR(20)	NOT NULL,
+	`rentalPeriod`	DATE	NOT NULL,
+	`paymentDate`	DATE	NOT NULL
 );
 
 ALTER TABLE `Member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (

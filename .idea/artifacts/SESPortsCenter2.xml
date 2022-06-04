@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SESPortsCenter2">
+    <output-path>$PROJECT_DIR$/out/artifacts/SESPortsCenter2</output-path>
+    <root id="archive" name="SESPortsCenter2.war">
+      <element id="artifact" artifact-name="Gradle : com.example : demo-1.0-SNAPSHOT.war (exploded)" />
+    </root>
+  </artifact>
+</component>
