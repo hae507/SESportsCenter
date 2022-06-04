@@ -30,6 +30,27 @@ public class MemberControl {
         return list;
     }
 
+    public List<Member> inquiryMemberById(String id){
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<Member> list = mapper.getMemberById2(id);
+        return list;
+    }
+
+    public List<Member> inquiryMemberByPw(String pw){
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<Member> list = mapper.getMemberByPw(pw);
+        return list;
+    }
+
+    public List<Member> inquiryMemberByPhoneNum(String phoneNum){
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<Member> list = mapper.getMemberByPhoneNum(phoneNum);
+        return list;
+    }
+
     public int getMemberCount(){
         SqlSession session = sqlSessionFactory.openSession();
         MemberMapper mapper = session.getMapper(MemberMapper.class);

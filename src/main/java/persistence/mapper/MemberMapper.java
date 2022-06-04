@@ -28,6 +28,21 @@ public interface MemberMapper {
     @ResultMap("resultSet")
     List<Member> getMemberByName(String name);
 
+    final String SELECT_BY_ID = "SELECT * FROM member WHERE id like  CONCAT('%',#{id},'%')";
+    @Select(SELECT_BY_ID)
+    @ResultMap("resultSet")
+    List<Member> getMemberById2(String id);
+
+    final String SELECT_BY_PW = "SELECT * FROM member WHERE password like  CONCAT('%',#{password},'%')";
+    @Select(SELECT_BY_PW)
+    @ResultMap("resultSet")
+    List<Member> getMemberByPw(String password);
+
+    final String SELECT_BY_PHONE_NUM = "SELECT * FROM member WHERE phoneNum like CONCAT('%',#{password})";
+    @Select(SELECT_BY_PHONE_NUM)
+    @ResultMap("resultSet")
+    List<Member> getMemberByPhoneNum(String phoneNum);
+
     final String SELECT = "SELECT * FROM member WHERE id = #{id}";
     @Select(SELECT)
     @ResultMap("resultSet")

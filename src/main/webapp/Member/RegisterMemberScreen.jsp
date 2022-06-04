@@ -137,7 +137,7 @@
         <label>비밀번호 확인</label>
         <input type="text" name="password2"/>
         <label>전화번호</label>
-        <input type="text" name="phoneNum"/>
+        <input type="text" name="phoneNum" placeholder="예) 010-1234-5678"/>
         <button type="submit">확인</button>
     </form>
 </div>

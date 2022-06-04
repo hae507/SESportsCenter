@@ -112,10 +112,14 @@
 
 <div class="searchArea">
     <form method="post" action="/Member/MemberScreen.jsp">
-<%--        <input type="hidden" name="boardId" value="${param.boardId}" />--%>
-
-<%--        <input value="${param.searchKeyword}" type="text" name="searchKeyword" placeholder="이름 입력">--%>
-        <input type="text" name="keyword" placeholder="이름 입력">
+        <select name="type">
+        <option value="이름">이름</option>
+        <option value="ID">ID</option>
+        <option value="비밀번호">비밀번호</option>
+        <option value="전화번호 뒷자리">전화번호 뒷자리</option>
+<%--            무조건 010-1111-1111 형식으로 넣어달라고 적기?--%>
+        </select>
+        <input type="text" name="keyword" placeholder="검색어 입력">
 <%--        <button id="searchBtn" onclick="search()">검색</button>--%>
         <button id="searchBtn"> 검색 </button>
         <input id="registerBtn" type="button" value="회원등록" onclick="location.href='/Member/RegisterMemberScreen.jsp'"/>
@@ -156,17 +160,28 @@
             <%
                 }
             } else {
-                    List<Member> memberList = memberControl.inquiryMemberByName(keyword);
-                    System.out.println("keyword : " + keyword);
+                String type = request.getParameter("type");
+                    System.out.println("type : " + type);
+                    List<Member> list = null;
+                    if(type.equals("이름")) {
+                        list = memberControl.inquiryMemberByName(keyword);
+                    } else if(type.equals("ID")){
+                        list = memberControl.inquiryMemberById(keyword);
+                    } else if(type.equals("비밀번호")){
+                        list = memberControl.inquiryMemberByPw(keyword);
+                    } else if(type.equals("전화번호 뒷자리")){
+                        list = memberControl.inquiryMemberByPhoneNum(keyword);
+                    }
+//                    System.out.println("keyword : " + keyword);
             %>
-            <% for(int i=0; i< memberList.size(); i++){ %>
+            <% for(int i=0; i< list.size(); i++){ %>
             <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
             <tbody>
             <td><%= i + 1 %></td>
-            <td><%= memberList.get(i).getId() %></td>
-            <td><%= memberList.get(i).getName() %></td>
-            <td><%= memberList.get(i).getPassword() %></td>
-            <td><%= memberList.get(i).getPhoneNum() %></td>
+            <td><%= list.get(i).getId() %></td>
+            <td><%= list.get(i).getName() %></td>
+            <td><%= list.get(i).getPassword() %></td>
+            <td><%= list.get(i).getPhoneNum() %></td>
             </tbody>
             <%
                 }
