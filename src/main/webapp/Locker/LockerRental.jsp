@@ -21,9 +21,16 @@
 <%
     String id = request.getParameter("id");
     String lockerId = request.getParameter("lockerId");
+    String temp = request.getParameter("rentalPeriod");
+    Date rentalPeriod = Date.valueOf(temp);
 
     Member member = memberControl.findById(id);
     Locker locker = lockerControl.findByLockerId(lockerId);
+    enrollLocker.setId(id);
+    enrollLocker.setLockerId(lockerId);
+    enrollLocker.setRentalPeriod(rentalPeriod);
+    EnrollLocker findByDate = enrollLockerControl.findByDate(enrollLocker);
+    EnrollLocker findByLocker = enrollLockerControl.findByLocker(enrollLocker);
 
     if(member == null){ %>
 <script>
@@ -37,18 +44,34 @@ else if(locker == null){ %>
     location.href="/Locker/LockerRentalScreen.jsp";
 </script>
 <%  }
+else if(findByLocker != null){ %>
+<script>
+    alert("해당 날짜의 사물함 신청 불가합니다.");
+    location.href="/Locker/LockerRentalScreen.jsp";
+</script>
+<%  }
 else{
+    if(findByDate != null){ %>
+<script>
+    alert("회원은 해당 날짜에 신청한 사물함이 존재합니다.");
+    location.href="/Locker/LockerRentalScreen.jsp";
+</script>
+
+<%      } else {
     request.setCharacterEncoding("utf-8");
 
     enrollLocker.setId(request.getParameter("id"));
     enrollLocker.setLockerId(request.getParameter("lockerId"));
     enrollLocker.setRentalPeriod(Date.valueOf(request.getParameter("rentalPeriod")));
     enrollLockerControl.lockerRental(enrollLocker);
+}
 %>
 <script>
     alert("사물함 신청 성공");
     location.href="/Locker/InsertLockerScreen.jsp";
 </script>
 <%  } %>
+
+
 </body>
 </html>

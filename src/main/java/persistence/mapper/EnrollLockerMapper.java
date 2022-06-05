@@ -18,7 +18,8 @@ public interface EnrollLockerMapper {
             @Result(property = "EnrollLockerNum",column = "EnrollLockerNum"),
             @Result(property = "lockerId" ,column = "lockerId"),
             @Result(property = "id",column = "id"),
-            @Result(property = "rentalPeriod",column = "rentalPeriod")
+            @Result(property = "rentalPeriod",column = "rentalPeriod"),
+            @Result(property = "paymentDate",column = "paymentDate")
     })
     List<EnrollLocker> getAll();
 
@@ -29,5 +30,11 @@ public interface EnrollLockerMapper {
     @Insert("insert into enrollLocker (lockerId, id, rentalPeriod, paymentDate) " +
             "values(#{lockerId}, #{id}, #{rentalPeriod}, #{paymentDate})")
     void lockerRental(EnrollLocker enrollLocker);
+
+    @Select("select * from enrollLocker where rentalPeriod=#{rentalPeriod} and id=#{id}")
+    EnrollLocker findByDate(EnrollLocker enrollLocker);
+
+    @Select("select * from enrollLocker where rentalPeriod=#{rentalPeriod} and lockerId=#{lockerId}")
+    EnrollLocker findByLocker(EnrollLocker enrollLocker);
 
 }

@@ -32,4 +32,6 @@ public interface LockerMapper {
     @Select("select * from locker where lockerId=#{lockerId}")
     Locker findByLockerId(String lockerId);
 
+
+
 }

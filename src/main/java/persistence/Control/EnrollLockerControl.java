@@ -43,4 +43,40 @@ public class EnrollLockerControl {
         }
     }
 
+    //날짜
+    public EnrollLocker findByDate(EnrollLocker enrollLocker){
+        EnrollLocker enroll = new EnrollLocker();
+        SqlSession session = sqlSessionFactory.openSession();
+        EnrollLockerMapper mapper = session.getMapper(EnrollLockerMapper.class);
+        try{
+            enroll = mapper.findByDate(enrollLocker);
+            session.commit();
+        } catch(Exception e){
+            e.printStackTrace();
+            session.rollback();
+        }
+        finally{
+            session.close();
+        }
+        return enroll;
+    }
+
+    public EnrollLocker findByLocker(EnrollLocker enrollLocker){
+        EnrollLocker enroll = new EnrollLocker();
+        SqlSession session = sqlSessionFactory.openSession();
+        EnrollLockerMapper mapper = session.getMapper(EnrollLockerMapper.class);
+        try{
+            enroll = mapper.findByLocker(enrollLocker);
+            session.commit();
+        } catch(Exception e){
+            e.printStackTrace();
+            session.rollback();
+        }
+        finally{
+            session.close();
+        }
+        return enroll;
+    }
+
+
 }
