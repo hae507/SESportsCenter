@@ -61,7 +61,6 @@
                 <a href="/"> 소공 체육센터 </a>
             </div>
             <ul class="nav">
-<%--                href에 각자 "/jsp파일"을 넣어주시면 됩니다--%>
                 <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
                 <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
                 <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>

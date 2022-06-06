@@ -8,9 +8,9 @@ import java.util.List;
 
 public class NoticeControl {
     Connection con = null;
-    String url = "jdbc:mysql://localhost:3306/Notice";
+    String url = "jdbc:mysql://localhost:3306/seeportscenter_lesson";
     String user = "root";
-    String password = "wls1452";
+    String password = "chan5542";
     public NoticeControl() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

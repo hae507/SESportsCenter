@@ -98,7 +98,7 @@
               params.Id = $(this).data('id');
 
               $.ajax({
-                 url:'/EnrollLesson',
+                 url:'/Lesson/EnrollLesson',
                  type:'post',
                  data: params,
                  success:function(data) {
@@ -127,9 +127,9 @@
                 <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
                 <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
                 <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>
-                <li> <a href="">공지관리</a> </li>
+                <li> <a href="/Notice/NoticeScreen.jsp">공지관리</a> </li>
                 <li> <a href="/Locker/InsertLockerScreen.jsp">사물함관리</a> </li>
-                <li> <a href="">매출관리</a> </li>
+                <li> <a href="/Sale/SalesManagement.jsp">매출관리</a> </li>
             </ul>
         </div>
     </div>

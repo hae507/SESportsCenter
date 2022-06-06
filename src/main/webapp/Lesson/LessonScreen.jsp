@@ -102,9 +102,9 @@ request.setCharacterEncoding("utf-8");
                 <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
                 <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
                 <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>
-                <li> <a href="">공지관리</a> </li>
+                <li> <a href="/Notice/NoticeScreen.jsp">공지관리</a> </li>
                 <li> <a href="/Locker/InsertLockerScreen.jsp">사물함관리</a> </li>
-                <li> <a href="">매출관리</a> </li>
+                <li> <a href="/Sale/SalesManagement.jsp">매출관리</a> </li>
             </ul>
         </div>
     </div>
@@ -123,7 +123,6 @@ request.setCharacterEncoding("utf-8");
 
     </form>
 </div>
-<%--    <% String keyword = request.getParameter("searchKeyword"); %>--%>
 
 <div class=""container>
     <div class="row">
@@ -150,7 +149,7 @@ request.setCharacterEncoding("utf-8");
 
 
             <% for(int i=0; i< list.size(); i++){ %>
-            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
+
             <tbody>
             <td><%= i + 1 %></td>
             <td><%= list.get(i).getLessonId() %></td>
@@ -169,7 +168,7 @@ request.setCharacterEncoding("utf-8");
                 System.out.println("keyword : " + keyword);
             %>
             <% for(int i=0; i< lessonList.size(); i++){ %>
-            <%--            if문 10보다 작으면 빈칸으로? 10넘어가면 다름 페이지로? 이건 나중에 하기--%>
+
             <tbody>
             <td><%= i + 1 %></td>
             <td><%= lessonList.get(i).getLessonId() %></td>

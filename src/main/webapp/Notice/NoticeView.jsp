@@ -121,12 +121,12 @@
         <a href="/"> 소공 체육센터 </a>
       </div>
       <ul class="nav">
-        <li> <a href="/MemberScreen.jsp">회원관리</a>  </li>
-        <li> <a href="">강사관리</a> </li>
-        <li> <a href="">강습관리</a> </li>
-        <li> <a href="/NoticeScreen.jsp">공지관리</a> </li>
-        <li> <a href="">사물함관리</a> </li>
-        <li> <a href="">매출관리</a> </li>
+        <li> <a href="/Member/MemberScreen.jsp">회원관리</a>  </li>
+        <li> <a href="/Instructor/InstructorScreen.jsp">강사관리</a> </li>
+        <li> <a href="/Lesson/LessonScreen.jsp">강습관리</a> </li>
+        <li> <a href="/Notice/NoticeScreen.jsp">공지관리</a> </li>
+        <li> <a href="/Locker/InsertLockerScreen.jsp">사물함관리</a> </li>
+        <li> <a href="/Sale/SalesManagement.jsp">매출관리</a> </li>
 
       </ul>
     </div>
