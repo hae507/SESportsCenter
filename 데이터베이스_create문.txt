@@ -1,4 +1,4 @@
-enrollLesson, EnrollLocker, instructor, sales AI설정 필요
+enrollLesson, EnrollLocker, instructor, sales, notice AI설정 필요
 
 CREATE TABLE `Member` (
 	`id`	VARCHAR(20)	NOT NULL,
