@@ -98,12 +98,13 @@
               params.Id = $(this).data('id');
 
               $.ajax({
-                 url:'/Lesson/EnrollLesson',
+                 url:'/Lesson/EnrollLesson.jsp',
                  type:'post',
                  data: params,
                  success:function(data) {
                      if(data == "success\r\n") {
                          alert('수강신청이 되었습니다');
+                         console.log("성공");
                      }
                      else {
                          alert('이미 동일 시간대에 다른 강의가 수강신청 되어있습니다');
@@ -136,7 +137,7 @@
 </div>
 <%--수강신청은 Member에 넣어야하나? --%>
 <div class="searchArea">
-    <form method="post" action="jsp">
+    <form method="post" action=jsp">
         <input type="text" name="keyword" placeholder="이름 입력">
         <%--        <button id="searchBtn" onclick="search()">검색</button>--%>
         <button id="searchBtn"> 검색 </button>

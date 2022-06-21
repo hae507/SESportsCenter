@@ -79,7 +79,7 @@ public class SalesControl {
 
                 int enrollLessonNum = rs.getInt("enrollLessonNum");
 
-                if(rs.wasNull()) {
+                if(rs.wasNull() || enrollLessonNum == 0) {
                     paymentItem = "사물함 대여";
                 }
                 else {paymentItem = "수강 신청";}
