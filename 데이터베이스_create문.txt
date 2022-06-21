@@ -1,4 +1,4 @@
-enrollLesson, EnrollLocker, instructor, sales AI설정 필요
+enrollLesson, EnrollLocker, instructor, sales, notice AI설정 필요
 
 CREATE TABLE `Member` (
 	`id`	VARCHAR(20)	NOT NULL,
@@ -45,10 +45,10 @@ CREATE TABLE `Sales` (
 );
 
 CREATE TABLE `Notice` (
-	`notice_no`	INT	NOT NULL,
-	`notice_title`	VARCHAR(50)	NOT NULL,
-	`notice_contents`	VARCHAR(500)	NOT NULL,
-	`notice_updateTime`	DATETIME	NOT NULL
+	`noticeNo`	INT	NOT NULL,
+	`noticeTitle`	VARCHAR(50)	NOT NULL,
+	`noticeContents`	VARCHAR(500)	NOT NULL,
+	`noticeUpdateTime`	DATETIME	NOT NULL
 );
 
 CREATE TABLE `EnrollLesson` (
@@ -90,7 +90,7 @@ ALTER TABLE `Sales` ADD CONSTRAINT `PK_SALES` PRIMARY KEY (
 );
 
 ALTER TABLE `Notice` ADD CONSTRAINT `PK_NOTICE` PRIMARY KEY (
-	`notice_no`
+	`noticeNo`
 );
 
 ALTER TABLE `EnrollLesson` ADD CONSTRAINT `PK_ENROLLLESSON` PRIMARY KEY (
